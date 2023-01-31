@@ -1,5 +1,9 @@
-<div>
-    <h4 class="text-center">Arabalar</h4>
+<div *ngIf="dataLoaded==false"  class="d-flex justify-content-center">
+    <div class="spinner-border text-dark text-center" role="status">
+        <span class="visually-hidden"></span>
+    </div>
+</div>
+<div *ngIf="dataLoaded!=false">
     <table class="table">
         <thead class="table-secondary">
             <tr>
@@ -8,6 +12,8 @@
                 <th>Color Type</th>
                 <th>Model Year</th>
                 <th>Daily Price</th>
+                
+                
             </tr>
         </thead>
         <tbody class="table-light">
@@ -16,7 +22,9 @@
                 <td>{{car.brandName}}</td>
                 <td>{{car.colorName}}</td>
                 <td>{{car.modelYear}}</td>
-                <td>{{car.dailyPrice}}</td>
+                <td>{{car.dailyPrice}} $</td>
+                
+                
             </tr>
         </tbody>
     </table>

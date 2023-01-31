@@ -11,7 +11,6 @@ import { CarImageComponent } from './components/car-image/car-image.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { NaviComponent } from './components/navi/navi.component';
-import { CategoryComponent } from './components/category/category.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 
@@ -26,8 +25,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     CustomerComponent,
     RentalComponent,
     NaviComponent,
-    CategoryComponent,
-    CarDetailComponent,
+    CarDetailComponent
     
   ],
   imports: [
