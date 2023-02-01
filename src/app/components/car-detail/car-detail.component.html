@@ -1,9 +1,11 @@
-<div *ngIf="dataLoaded==false"  class="d-flex justify-content-center">
+<div *ngIf="dataLoaded==false" class="d-flex justify-content-center">
     <div class="spinner-border text-dark text-center" role="status">
         <span class="visually-hidden"></span>
     </div>
 </div>
+
 <div *ngIf="dataLoaded!=false">
+
     <table class="table">
         <thead class="table-secondary">
             <tr>
@@ -12,20 +14,66 @@
                 <th>Color Type</th>
                 <th>Model Year</th>
                 <th>Daily Price</th>
-                
-                
             </tr>
         </thead>
         <tbody class="table-light">
-            <tr *ngFor="let car of carDetails">
+            <tr *ngFor="let car of carDetails" routerLink="/cars/car/{{car.carId}}">
                 <td>{{car.carId}}</td>
                 <td>{{car.brandName}}</td>
                 <td>{{car.colorName}}</td>
                 <td>{{car.modelYear}}</td>
-                <td>{{car.dailyPrice}} $</td>
-                
-                
+                <td><span class="text-success fw-bold">$</span>{{car.dailyPrice}}</td>
             </tr>
         </tbody>
     </table>
+
+
+    <div *ngIf="carDetailLoaded">
+        <div class="row justify-content-center">
+            <div class="mb-4 w-75 ">
+                <div id="carImageSlider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div *ngFor="let image of carImages ; first as isFirst">
+                            <div *ngIf="isFirst" class="carousel-item active">
+                                <img [src]="getImagePath(image)" class="d-block w-100" alt="">
+                            </div>
+                            <div #elseBlock class="carousel-item ">
+                                <img [src]="getImagePath(image)" class="d-block w-100" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carImageSlider"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carImageSlider"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+      
+            <br>
+      
+            <div class="col-md-6">
+                <div *ngFor="let car of carDetails" class="bg-light border shadow ps-3 pt-3">
+                    <p><strong>Marka: </strong>{{car.brandName}}</p>
+                    <p><strong>Renk: </strong>{{car.colorName}}</p>
+                    <p><strong>Model Yılı: </strong>{{car.modelYear}}</p>
+                    <p><strong>Model Detay: </strong>{{car.carName}}</p>
+                    <p><strong>Fiyat: </strong><span class="text-success fw-bold">$</span> {{car.dailyPrice}}</p>
+                    <p class="warning-message-small"> <span class="warning-icon-small">*</span> Belirtilen fiyat aylık
+                        kiralama bedelidir.</p>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
 </div>
+
+
+   
+
